@@ -1,1 +1,8 @@
-console.log("Hello World")
+let socket = new WebSocket("ws://localhost:8000/ws/graph/")
+
+socket.onmessage = function (e) {
+  let djangoData = JSON.parse(e.data)
+  console.log(djangoData)
+
+  document.querySelector("#app").innerText = djangoData.value
+}
